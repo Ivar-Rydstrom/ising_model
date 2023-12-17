@@ -1,8 +1,8 @@
 // canvas constants
 const W = 650;
 const H = 650;
-var xnum = 100;
-var ynum = 100;
+var xnum = 10;
+var ynum = 10;
 var GRIDSIZE_X = W/xnum;
 var GRIDSIZE_Y = H/ynum;
 var t = 0;
