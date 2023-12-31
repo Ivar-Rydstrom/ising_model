@@ -127,7 +127,7 @@ function update_data_span() {
   }
   data_span.html(`
     <span style='display:block;'>Paused: ${paused}</span>
-    <span style='display:block;'>Temperature: ${T}</span>
+    <span style='display:block;text-wrap:nowrap'>Temperature: ${T}</span>
     <span style='display:block;'>Size: ${ynum}x${xnum}</span>
     <span style='display:block'>Iterations: ${iterations}</span>
     <span style='display:block'>${Ustring}</span>
@@ -275,6 +275,8 @@ function setup() {
   // create GUI
   pause_button = createButton("Play/Pause Simulation");
   pause_button.position(W+10, 20);
+  pause_button.id("pause_button");
+  document.querySelector("#pause_button").style.textWrap = "nowrap";
   paused = true;
   pause_button.mousePressed(function() {
     paused = !paused;
@@ -283,6 +285,8 @@ function setup() {
   });
   energy_button = createCheckbox('Log Energy', false);
   energy_button.position(W+10,40);
+  energy_button.id("energy_button");
+  document.querySelector("#energy_button").style.textWrap = "nowrap";
   energy_button.mousePressed(function() {
     if (energy_button.checked()) {
       energy_data = [];
@@ -290,6 +294,8 @@ function setup() {
   });
   mag_button = createCheckbox('Log Magnetization', false);
   mag_button.position(W+10,60);
+  mag_button.id("mag_button");
+  document.querySelector("#mag_button").style.textWrap = "nowrap";
   mag_button.mousePressed(function() {
     if (mag_button.checked()) {
       mag_ = [];  
@@ -317,6 +323,8 @@ function setup() {
   N_input.position(50,0);
   reset_button = createButton("Reset Simulation");
   reset_button.position(W+10+50,185);
+  reset_button.id("reset_button");
+  document.querySelector("#reset_button").style.textWrap = "nowrap";
   reset_button.mousePressed(function() {
     iterations = 0;
     T = Number(T_input.value());
@@ -338,11 +346,15 @@ function setup() {
     saveJSON(energy_data, 'energy');
   });
   download_energy.position(W+10, 360);
+  download_energy.id("energy_json_button");
+  document.querySelector("#energy_json_button").style.textWrap = "nowrap";
   download_mag = createButton('Download magnetization.json');
   download_mag.mousePressed(function() {
     saveJSON(mag_data, 'magnetization');
   });
   download_mag.position(W+10,385);
+  download_mag.id("mag_json_button");
+  document.querySelector("#mag_json_button").style.textWrap = "nowrap";
   cluster_span = createSpan();
   cluster_span.position(W+10,440);
   cluster_span.style('width','250px');
